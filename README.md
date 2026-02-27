@@ -30,7 +30,7 @@
 
 Este projeto constrói e avalia **3 modelos de Regressão Linear Simples**, cada um utilizando uma variável independente diferente para prever a mesma variável alvo: a **taxa de juros (`int_rate`)** de empréstimos concedidos pela plataforma Lending Club.
 
-Além das regressões clássicas via `statsmodels` e `scikit-learn`, cada modelo possui uma versão equivalente implementada como **rede neural simples (single-neuron)** em `TensorFlow/Keras`, demonstrando que uma rede com um único neurônio linear é matematicamente equivalente à regressão linear.
+Além das regressões clássicas via `statsmodels`, cada modelo possui uma versão equivalente implementada como **rede neural simples (single-neuron)** em `TensorFlow/Keras`, demonstrando que uma rede com um único neurônio linear é matematicamente equivalente à regressão linear.
 
 O foco do trabalho está no **rigor estatístico** (verificação das premissas de regressão) e na **clareza didática** (código ricamente comentado em português), de modo que cada decisão possa ser explicada e defendida em apresentação.
 
@@ -66,7 +66,7 @@ A Regressão Linear Simples é o ponto de partida ideal: permite isolar o efeito
 | **Nome** | Lending Club Loan Data |
 | **Fonte** | [Kaggle — Lending Club Loan Data](https://www.kaggle.com/datasets/wordsforthewise/lending-club) |
 | **Volume original** | ~2,2 milhões de linhas × 150+ colunas |
-| **Amostragem usada** | Amostra estratificada de **50.000 registros** (para viabilizar execução local) |
+| **Amostragem usada** | Amostra estratificada de **300.000 registros** (para viabilizar execução local) |
 | **Variável-alvo** | `int_rate` — Taxa de juros anual do empréstimo (%) |
 
 > **Nota:** O script de preparação realiza a amostragem estratificada por faixa de `grade` (classificação de risco do Lending Club, de A a G), garantindo representatividade da distribuição original.
@@ -95,7 +95,7 @@ O notebook segue o pipeline abaixo, aplicado a cada um dos 3 modelos:
 ┌─────────────────────────────────────────────────────┐
 │  1. CARREGAMENTO E AMOSTRAGEM DO DATASET            │
 │     • Leitura do CSV                                │
-│     • Amostra estratificada (50k registros)         │
+│     • Amostra estratificada (300k registros)        │
 │     • Seleção de colunas relevantes                 │
 ├─────────────────────────────────────────────────────┤
 │  2. ANÁLISE EXPLORATÓRIA (EDA)                      │
@@ -116,8 +116,7 @@ O notebook segue o pipeline abaixo, aplicado a cada um dos 3 modelos:
 │  5. MODELAGEM                                       │
 │     Para cada variável X:                           │
 │     a) Regressão via statsmodels (OLS summary)      │
-│     b) Regressão via scikit-learn                   │
-│     c) Rede Neural simples via TensorFlow/Keras     │
+│     b) Rede Neural simples via TensorFlow/Keras     │
 ├─────────────────────────────────────────────────────┤
 │  6. VALIDAÇÃO DAS PREMISSAS (ASSUMPTIONS)           │
 │     • Linearidade (scatter + fitted line)           │
@@ -147,7 +146,6 @@ O notebook segue o pipeline abaixo, aplicado a cada um dos 3 modelos:
 | `numpy` | ≥ 1.24 | Operações numéricas |
 | `matplotlib` | ≥ 3.7 | Visualizações estáticas |
 | `seaborn` | ≥ 0.12 | Visualizações estatísticas |
-| `scikit-learn` | ≥ 1.3 | Modelagem e métricas |
 | `statsmodels` | ≥ 0.14 | Sumário estatístico OLS |
 | `tensorflow` | ≥ 2.15 | Rede neural simples |
 | `scipy` | ≥ 1.11 | Testes estatísticos |
@@ -161,7 +159,7 @@ projeto-1-regressao-linear/
 │
 ├── README.md                 ← Este documento
 ├── requirements.txt          ← Dependências do projeto
-├── notebook.ipynb            ← Notebook principal (código + análise)
+├── LinearRegressions.ipynb   ← Notebook principal (código + análise)
 │
 └── data/                     ← (Opcional) Diretório para o CSV local
     └── .gitkeep
@@ -228,10 +226,10 @@ O notebook utiliza a biblioteca `kagglehub` para baixar o dataset automaticament
 #### 5️ Execute o notebook
 
 ```bash
-jupyter notebook notebook.ipynb
+jupyter notebook LinearRegressions.ipynb
 ```
 
-Ou, se preferir o VS Code, abra o arquivo `notebook.ipynb` diretamente — o VS Code detectará o kernel do ambiente virtual automaticamente.
+Ou, se preferir o VS Code, abra o arquivo `LinearRegressions.ipynb` diretamente — o VS Code detectará o kernel do ambiente virtual automaticamente.
 
 ---
 
@@ -256,8 +254,7 @@ Para cada modelo de Regressão Linear Simples, serão reportadas:
 2. **MONTGOMERY, D. C.; PECK, E. A.; VINING, G. G.** *Introduction to Linear Regression Analysis*. 5ª ed. Wiley, 2012.
 3. **Lending Club Dataset (Kaggle).** Disponível em: https://www.kaggle.com/datasets/wordsforthewise/lending-club
 4. **Documentação statsmodels — OLS.** Disponível em: https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLS.html
-5. **Documentação scikit-learn — LinearRegression.** Disponível em: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
-6. **Documentação TensorFlow/Keras.** Disponível em: https://www.tensorflow.org/api_docs/python/tf/keras
+5. **Documentação TensorFlow/Keras.** Disponível em: https://www.tensorflow.org/api_docs/python/tf/keras
 
 ---
 

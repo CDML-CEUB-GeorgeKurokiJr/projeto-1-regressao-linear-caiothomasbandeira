@@ -13,9 +13,6 @@ seaborn>=0.12.0
 # --- Modelagem Estatística (OLS com sumário detalhado) ---
 statsmodels>=0.14.0
 
-# --- Machine Learning (Regressão e Métricas) ---
-scikit-learn>=1.3.0 
-
 # --- Deep Learning (Rede Neural Simples) ---
 tensorflow>=2.15.0
 
